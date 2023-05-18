@@ -20,10 +20,12 @@
 
 def everything_for_your_cat(cats_data):
     people = {}
+    owner = {}
+    our_str = ""
     for people in cats_data:
-        if cats_data[-1] not in people:
-            people[surname + "" + name] =cats_data
-        print(people)
+        names = people[-1] + " " + people[-2]
+        animal = people[0] + " " + str(people[1])
+        print(names, animal)
     #return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
