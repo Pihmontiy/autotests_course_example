@@ -21,7 +21,8 @@
 def everything_for_your_cat(cats_data):
     people = {}
     for people in cats_data:
-        people = dict.fromkeys(cats_data[-1] + cats_data[-2])
+        if cats_data[-1] not in people:
+            people[surname + "" + name] =cats_data
         print(people)
     #return our_str
 
