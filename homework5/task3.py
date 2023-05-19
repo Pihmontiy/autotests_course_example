@@ -19,14 +19,18 @@
 
 
 def everything_for_your_cat(cats_data):
-    people = {}
+
     owner = {}
     our_str = ""
-    for people in cats_data:
-        names = people[-1] + " " + people[-2]
-        animal = people[0] + " " + str(people[1])
-        print(names, animal)
-    #return our_str
+    for overall in cats_data:
+        name = overall[-2] + " " + overall[-1]
+        animal = overall[0] + ", " + str(overall[1])
+        if name not in owner:
+            owner[name] = []
+        owner[name].append(animal)
+    for key, value in owner.items():
+        our_str += key + ": " + "; ".join(value) + '\n'
+    return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 

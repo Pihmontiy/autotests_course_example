@@ -14,7 +14,18 @@
 
 
 def scrabble(word):
-    # Здесь нужно написать код
+    price = dict.fromkeys(['а', 'в', 'е', 'ё', 'и', 'н', 'о', 'р', 'с', 'т'], 1)
+    price.update(dict.fromkeys(['д', 'к', 'л', 'м', 'п', 'у'], 2))
+    price.update(dict.fromkeys(['б', 'г', 'ь', 'я'], 3))
+    price.update(dict.fromkeys(['й', 'ы'], 4))
+    price.update(dict.fromkeys(['ж', 'з', 'х', 'ц', 'ч'], 5))
+    price.update(dict.fromkeys(['ф', 'ш', 'э', 'ю'], 8))
+    price.update(dict.fromkeys(['щ'], 10))
+    price.update(dict.fromkeys(['ъ'], 15))
+    points = 0
+    for i in word:
+        points += price[i]
+    print(points)
     return points
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
