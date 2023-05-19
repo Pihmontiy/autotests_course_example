@@ -25,7 +25,6 @@ def scrabble(word):
     points = 0
     for i in word:
         points += price[i]
-    print(points)
     return points
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
