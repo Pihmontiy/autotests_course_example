@@ -32,29 +32,17 @@ class PersonInfo:
         return fullname
 
     def path_deps(self):
-        split_path = ' --> '.join(self.args[2::])
+        split_path = ' --> '.join(self.args[2:])
         return split_path
 
     def new_salary(self):
         letters_dict = {}
-        summa = 0
-        count = 0
-        _max = 0
         _str = ''.join(self.args[2::])
-        for i in _str:
-            if i not in letters_dict:
+        for letter in _str:
+            if letter not in letters_dict:
                 letters_dict[i] = 0
             letters_dict[i] += 1
-        sorted_dict = sorted(letters_dict.values(), reverse=True)
-        for x in sorted_dict:
-            _max = x
-            if x >= _max:
-                if x+1 == _max:
-                    break
-                summa += x
-                count += 1
-                if count == 3:
-                    break
+        summa = sum(list(sorted(letters_dict.values(), reverse=True))[:3])
         full_sum = 1337 * int(self.args[1]) * summa
         return full_sum
 
