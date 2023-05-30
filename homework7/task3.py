@@ -51,6 +51,9 @@ class Bus(PublicTransport):
         if key == 'park':
             if 9999 >= value >= 1000:
                 self.__park = value
+                return
+            raise AssertionError
+        self.__dict__[key] = value
 
 
 class Tram(PublicTransport):
