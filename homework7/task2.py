@@ -24,9 +24,6 @@
 class PersonInfo:
     def __init__(self, *args):
         self.args = args
-        print(self.args[1])
-
-
 
     def short_name(self):
         name = str(self.args[0])
@@ -34,14 +31,12 @@ class PersonInfo:
         fullname = (split_name[1]) + " " + (split_name[0][0]) + "."
         return fullname
 
-
     def path_deps(self):
         split_path = ' --> '.join(self.args[2::])
         return split_path
 
     def new_salary(self):
         letters_dict = {}
-        sorted_dict = {}
         summa = 0
         count = 0
         _max = 0
