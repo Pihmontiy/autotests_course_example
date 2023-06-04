@@ -16,6 +16,19 @@
 import unittest  # Не удалять
 
 
+class Trigon:
+    def __init__(self, *triangle):
+        self.triangle = triangle
+        if len(triangle) != 3:
+            raise IndexError(f'Передано {len(triangle)} аргументов, а ожидается 3')
+        try:
+            if min(triangle) <= 0:
+                raise ValueError('Стороны должны быть положительными')
+            elif sum(triangle) < 2 * max(triangle):
+                raise Exception('Не треугольник')
+        except TypeError:
+            raise TypeError('Стороны должны быть числами')
+
 # Здесь пишем код
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
