@@ -6,12 +6,10 @@
 # Здесь пишем код
 
 f = open('test_file/task_3.txt').read().split('\n')
-s_line = ''
 summ = 0
 price_list = []
-three_most_expensive_purchases = 0
 for i in f:
-    if i == s_line:
+    if i == '':
         price_list.append(int(summ))
         summ = 0
         continue
