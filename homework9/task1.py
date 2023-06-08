@@ -7,8 +7,8 @@ f1 = open('test_file/task1_data.txt', encoding='utf-8')
 f2 = open('test_file/task1_answer.txt', 'w', encoding='utf-8')
 text1 = ''.join(f1.readlines())
 for i in text1:
-    if i.isdigit() is True:
-        del i
+    if i.isdigit():
+        continue
     else:
         f2.write(i)
 f1.close()

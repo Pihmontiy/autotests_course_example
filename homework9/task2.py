@@ -1,3 +1,5 @@
+
+
 # Напишите декоратор func_log, который может принимать аргумент file_log (Путь до файла), по умолчнию равен 'log.txt'
 # Декоратор должен дозаписывать в файл имя вызываемой функции (можно получить по атрибуту __name__), дату и время вызова
 # по формату:
@@ -32,5 +34,32 @@
 
 
 import datetime
+import time
 
-# Здесь пишем код
+
+def func_log(file_log='log.txt'):
+    def decorator(func):
+        def wrapper():
+            f = open(file_log, "a")
+            t = datetime.datetime.now().strftime('%d.%m %H:%M:%S')
+            name = func.__name__
+            f.write(f'{name} вызвана {t} \n')
+            f.close()
+            func()
+        return wrapper
+    return decorator
+
+
+@func_log()
+def func1():
+    time.sleep(1)
+
+
+@func_log(file_log='func2.txt')
+def func2():
+    time.sleep(1)
+
+
+func1()
+func2()
+func1()
