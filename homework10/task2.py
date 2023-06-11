@@ -16,4 +16,24 @@ def all_division(*arg1):
         division /= i
     return division
 
-def test_1():
+
+def test_one():
+    assert all_division(10, 2) == 5
+
+
+def test_zero():
+    with pytest.raises(ZeroDivisionError):
+        all_division(10, 0)
+
+
+@pytest.mark.smoke
+def test_negative():
+    assert all_division(-10, -2) == 5
+
+
+def test_float():
+    assert all_division(10, 0.5) == 20
+
+
+def test_lnum():
+    assert all_division(1000000, 100000) == 10
