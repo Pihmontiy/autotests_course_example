@@ -36,4 +36,4 @@ def test_float():
 
 
 def test_lnum():
-    assert all_division(1000000, 100000) == 10
+    assert all_division(50000000, 100000) == 500
