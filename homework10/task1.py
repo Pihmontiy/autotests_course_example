@@ -21,12 +21,12 @@ def generate_random_name():
 
     letter = string.ascii_lowercase
     latin_words = []
-    while True: # не знаем сколько раз позовут генератор
-        for i in range(2): #нам нужно 2 слова
-            words = ''.join([random.choice(letter) for x in range(random.randrange(1, 15, 1))]) #генерируем из набор букв слово в заданной длинне
-            latin_words.append(words) #апендим сгенерированное слово к пустому списку. генерим 2 слова и в цикле получим здесь 2 слова листом
-        yield " ".join(latin_words) #разбиваем список через пробел и делаем строкой, отдаем результат этого такта
-        latin_words = [] #чистим сгенерированные слова для новой итерации
+    while True:
+        for i in range(2):
+            words = ''.join([random.choice(letter) for x in range(random.randrange(1, 15, 1))])
+            latin_words.append(words)
+        yield " ".join(latin_words)
+        latin_words = []
 
 
 gen = generate_random_name()
