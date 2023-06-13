@@ -61,6 +61,7 @@ try:
     detail_btn.click()
 
     print('Проверить адрес сайта')
+    sleep(1)
     assert driver.current_url == tensor_about, 'Неверный адрес'
 
 finally:
