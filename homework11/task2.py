@@ -86,12 +86,11 @@ try:
     msg_chain.perform()
     sleep(1)
     del_btn = driver.find_element(By.XPATH, '//div[@data-target="menu_item_deleteToArchive"]')
+    sleep(1)
     del_btn.click()
 
     print('Проверяем что сообщение удалено')
-    if not my_msg.is_displayed:
-        assert False
-    else:
-        assert True
+    sleep(1)
+    assert len(driver.find_elements(By.XPATH, "//p[contains(text(),'Тестовый текст')]")) == 0, 'Сообщение не удалилось'
 finally:
     driver.quit()
