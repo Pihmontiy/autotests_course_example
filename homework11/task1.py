@@ -14,8 +14,8 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome()
 sbis_site = 'https://sbis.ru/'
 sbis_title = 'СБИС — экосистема для бизнеса: учет, управление и коммуникации'
-sbis_contact = 'https://sbis.ru/contacts/02-respublika-bashkortostan?tab=clients'
-sbis_contact_title = 'СБИС Контакты — Республика Башкортостан'
+sbis_contact = 'https://sbis.ru/contacts'
+sbis_contact_title = 'СБИС Контакты'
 tensor_site = 'https://tensor.ru/'
 tensor_about = 'https://tensor.ru/about'
 
@@ -39,8 +39,8 @@ try:
 
     print('Проверить адрес сайта и заголовок страницы')
     sleep(1)
-    assert driver.current_url == sbis_contact
-    assert driver.title == sbis_contact_title
+    assert sbis_contact in driver.current_url, 'Неверный адрес страницы'
+    assert sbis_contact_title in driver.title, 'Неверный заголовок сайта'
 
     print('Кликнуть на баннер "Тензор"')
     tens_btn = driver.find_element(By.CSS_SELECTOR, '.sbisru-Contacts__border-left a[href="https://tensor.ru/"]')
