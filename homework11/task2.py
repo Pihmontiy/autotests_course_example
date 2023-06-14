@@ -54,6 +54,7 @@ try:
     sleep(3)
 
     print('Открываем окно выбора адресата')
+    sleep(1)
     pvp_panel = driver.find_element(By.XPATH, '//div[@class="controls-StackTemplate-content"]')
     assert pvp_panel.is_displayed(), 'Панель выбора адресата не отображается'
     search_input = driver.find_element(By.XPATH, "//div[contains(@class,'popup')]//input")
@@ -74,11 +75,23 @@ try:
 
     print('Отправляем тестовое сообщение')
     msg_input.send_keys('Тестовый текст', Keys.CONTROL, Keys.ENTER)
-
-    
-    my_msg = driver.find_element(By.CLASS_NAME, '.msg-entity-text')
+    sleep(1)
+    my_msg = driver.find_element(By.XPATH, "//p[contains(text(),'Тестовый текст')]")
     assert my_msg.text == 'Тестовый текст'
-    sleep(5)
 
+    print('Удаляем тестовое сообщение по контекстному меню')
+    msg_chain = ActionChains(driver)
+    msg_chain.move_to_element(my_msg)
+    msg_chain.context_click(my_msg)
+    msg_chain.perform()
+    sleep(1)
+    del_btn = driver.find_element(By.XPATH, '//div[@data-target="menu_item_deleteToArchive"]')
+    del_btn.click()
+
+    print('Проверяем что сообщение удалено')
+    if not my_msg.is_displayed:
+        assert False
+    else:
+        assert True
 finally:
     driver.quit()
